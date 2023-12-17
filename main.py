@@ -23,6 +23,24 @@ class Student:
                 f'Курсы в процессе изучения: {", ".join(self.courses_in_progress)}\n'
                 f'Завершенные курсы: {", ".join(self.finished_courses)}')
 
+    def __le__(self, other):
+        return self.compare <= other.compare
+
+    def __lt__(self, other):
+        return self.compare < other.compare
+
+    def __ge__(self, other):
+        return self.compare >= other.compare
+
+    def __gt__(self, other):
+        return self.compare > other.compare
+
+    def __eq__(self, other):
+        return self.compare == other.compare
+
+    def __ne__(self, other):
+        return self.compare != other.compare
+
     @property
     def compare(self):
         return sum([sum(grade) for grade in self.grades.values()]) / sum(
@@ -44,6 +62,24 @@ class Lecturer(Mentor):
         return (f'Имя: {self.name}\n'
                 f'Фамилия: {self.surname}\n'
                 f'Средняя оценка за лекции: {average_grade}')
+
+    def __le__(self, other):
+        return self.compare <= other.compare
+
+    def __lt__(self, other):
+        return self.compare < other.compare
+
+    def __ge__(self, other):
+        return self.compare >= other.compare
+
+    def __gt__(self, other):
+        return self.compare > other.compare
+
+    def __eq__(self, other):
+        return self.compare == other.compare
+
+    def __ne__(self, other):
+        return self.compare != other.compare
 
     @property
     def compare(self):
@@ -111,5 +147,10 @@ reviewer2.rate_hw(best_student2, 'Java', 10)
 
 print(students_average_grade([best_student1, best_student2], 'Python'))
 print(students_average_grade([best_student1, best_student2], 'Java'))
-print(students_average_grade([cool_mentor1, cool_mentor2], 'Python'))
-print(students_average_grade([cool_mentor1, cool_mentor2], 'Java'))
+print(lector_average_grade([cool_mentor1, cool_mentor2], 'Python'))
+print(lector_average_grade([cool_mentor1, cool_mentor2], 'Java'))
+
+print(best_student1 < cool_mentor2)
+print(best_student2 != cool_mentor2)
+print(best_student1 > cool_mentor1)
+print(best_student2 == cool_mentor1)
